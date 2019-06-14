@@ -1,0 +1,9 @@
+--Add new migration--
+php artisan make:migration nameClass --table=nameTable
+
+--Add migrations to database--
+php artisan migrate
+
+--Start php Lumel Server--
+php -S localhost:8000 -t public
+
