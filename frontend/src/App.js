@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+// import logo from './logo.svg';
 import './App.css';
+import Tests from './components/tests';
 
-function App() {
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      tests : []
+    }  
+    this.getTests();  
+  }
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div className="App container">
+        
+        <table className="table table-hover table-dark">
+          <thead>
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>
+                Data
+              </th>  
+            </tr>
+          </thead>
+          <tbody>
+              {this.state.tests.map(test=><Tests test={test} key={test.id}/>)}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+
+  //functions
+  getTests = () => {
+    fetch('http://localhost:8000/test').then(res => res.json()).then(tests => this.setState({tests:tests})).catch();
+  }
 }
 
 export default App;
