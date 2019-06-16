@@ -6,7 +6,7 @@
 
 $router->get('/test', ["uses"=>"TestsController@index"]);
 
-//SECURE KEY GENERATOR
-// $router->get('/key', function(){
-//     return str_random(32);
-// });
+// SECURE KEY GENERATOR
+$router->get('/key', function(){
+    return str_random(32);
+});
