@@ -4,9 +4,9 @@
 //     return $router->app->version();
 // });
 
-$router->get('/test', ["uses"=>"TestsController@index"]);
-
+$router->get('/test', ["uses"=>"TestsController@getTests"]);
+$router->post('/test', ["uses"=>"TestsController@createTest"]);
 // SECURE KEY GENERATOR
-$router->get('/key', function(){
-    return str_random(32);
-});
+// $router->get('/key', function(){
+//     return str_random(32);
+// });
