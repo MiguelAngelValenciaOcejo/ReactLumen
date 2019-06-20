@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>test</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Tests
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row *ngFor="let elemento of elements">
+      <ion-col col-6>
+        {{elemento.id}}
+      </ion-col>
+      <ion-col col-6>
+        {{elemento.data}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

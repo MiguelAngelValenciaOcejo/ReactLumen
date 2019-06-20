@@ -12,9 +12,23 @@ class TestsController extends Controller
     }
     function createTest(Request $request){
         $data = $request->json()->all();
-        $tests = Test::create([
+        $test = Test::create([
             'data'=>$data['data']
         ]);
-        return response()->json($tests, 201);
+        return response()->json($test, 200);
+    }
+    function deleteTest(Request $request){
+        $data = $request->json()->all();
+        $test = Test::find($data['id']);
+        $test->delete();
+        return response()->json($test, 200);
+    }
+    function updateTest(Request $request){
+        $data = $request->json()->all();
+        $test = Test::find($data['id']);
+        $test->update([
+            'data'=>$data['data']
+        ]);
+        return response()->json($test, 200);
     }
 }
